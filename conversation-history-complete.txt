@@ -1,0 +1,961 @@
+COMPLETE CONVERSATION HISTORY EXPORT - FULL TRANSCRIPT
+========================================================
+Generated: 2025-01-27
+
+CONVERSATION SUMMARY:
+This comprehensive conversation involved building a complete business website for Regtime, a company focused on affordable housing management. The project evolved from initial setup through advanced features, brand implementation, debugging, and multiple deployments to Bolt Hosting.
+
+DETAILED CONVERSATION LOG WITH EXACT TRANSCRIPTS:
+=================================================
+
+PHASE 1: PROJECT INITIALIZATION & FOUNDATION
+=============================================
+
+1. INITIAL PROJECT SETUP REQUEST
+--------------------------------
+USER PROMPT: "Create a business website for Regtime"
+
+ASSISTANT RESPONSE:
+"I'll help you create a professional business website for Regtime. Let me set up a modern Next.js application with a clean, professional design."
+
+EXACT IMPLEMENTATION STEPS:
+1. Created Next.js 14 application with TypeScript
+2. Set up Tailwind CSS for styling
+3. Integrated Framer Motion for animations
+4. Added shadcn/ui component library
+
+FILES CREATED:
+- package.json (with all dependencies)
+- next.config.js (configuration)
+- tailwind.config.ts (Tailwind setup)
+- app/layout.tsx (root layout)
+- app/page.tsx (homepage)
+- app/globals.css (global styles)
+
+EXACT CODE OUTPUT - app/layout.tsx:
+```typescript
+import './globals.css';
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+
+const aspekta = localFont({
+  src: [
+    { path: '../public/fonts/Aspekta-300.woff2', weight: '300', style: 'normal' },
+    { path: '../public/fonts/Aspekta-400.woff2', weight: '400', style: 'normal' },
+    { path: '../public/fonts/Aspekta-500.woff2', weight: '500', style: 'normal' },
+    { path: '../public/fonts/Aspekta-700.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-aspekta',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'Regtime',
+  description: 'Transforming affordable housing management with intelligent automation and compliance tools.',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body className={`${aspekta.variable} bg-background text-foreground antialiased`}>
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+2. BRAND ASSET INTEGRATION REQUEST
+----------------------------------
+USER PROMPT: "I have brand assets for Regtime. Here are the logos, fonts, and color guidelines."
+
+ASSISTANT RESPONSE:
+"Perfect! I'll integrate all your brand assets into the website. Let me implement the Aspekta font family, color system, and logo variations according to your brand guidelines."
+
+EXACT IMPLEMENTATION STEPS:
+1. Added Aspekta font files to public/fonts/
+2. Created comprehensive color token system
+3. Integrated logo variations for different contexts
+4. Set up brand-consistent typography scale
+
+EXACT CODE OUTPUT - styles/tokens.css:
+```css
+/* Regtime Canonical Tokens (synced to Brand Guidelines 1.0) */
+:root {
+  /* Brand Palette */
+  --brand-baby: #78C7EA;     /* Baby Blue */
+  --brand-alice: #DEEDF4;    /* Alice Blue */
+  --brand-night: #111111;    /* Night */
+  --brand-dim: #636363;      /* Dim Gray */
+  --brand-cadet: #9CB2BC;    /* Cadet Gray */
+  --brand-anti: #EBEBEB;     /* Anti-Flash White */
+  --brand-white: #FFFFFF;
+
+  /* Alias for Tailwind extension/back-compat */
+  --brand-primary: var(--brand-baby);
+  --brand-secondary: var(--brand-cadet);
+  --brand-accent: var(--brand-alice);
+
+  /* Surface tokens (HSL where applicable) */
+  --background: 222 47% 7%;
+  --foreground: 210 40% 96%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 96%;
+  --popover: 222 47% 7%;
+  --popover-foreground: 210 40% 96%;
+  --primary: 199 74% 69%; /* #78C7EA */
+  --primary-foreground: 210 40% 96%;
+  --secondary: 200 17% 41%; /* #9CB2BC darker */
+  --secondary-foreground: 210 40% 96%;
+  --muted: 222 47% 12%;
+  --muted-foreground: 215 16% 72%;
+  --accent: 199 74% 16%; /* darker alice */
+  --accent-foreground: 210 40% 96%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 215 28% 17%;
+  --input: 215 28% 17%;
+  --ring: 199 74% 69%;
+
+  --radius: 16px;
+}
+```
+
+3. HEADER COMPONENT CREATION
+----------------------------
+USER PROMPT: "Add a navigation header with the Regtime logo and menu items"
+
+ASSISTANT RESPONSE:
+"I'll create a professional header component with the Regtime logo, navigation menu, and mobile-responsive design."
+
+EXACT CODE OUTPUT - components/Header.tsx:
+```typescript
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
+
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Products', href: '/services' },
+  { name: 'Contact', href: '/contact' },
+];
+
+export default function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <header className="bg-background sticky top-0 z-40 border-b border-[hsl(var(--border))]/60">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8" aria-label="Global">
+        {/* Left: Brand lockup */}
+        <div className="flex lg:flex-1">
+          <Link href="/" aria-label="Regtime home" className="-m-1.5 p-1.5">
+            <Image
+              src="/lockup-anti-white-logo.png"
+              alt="Regtime"
+              width={160}
+              height={36}
+              className="h-8 w-auto md:h-10 md:w-auto"
+              priority
+            />
+          </Link>
+        </div>
+
+        {/* Desktop nav */}
+        <div className="hidden lg:flex lg:gap-x-12">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-sm font-semibold leading-6 text-foreground hover:text-brand-primary transition-colors"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Mobile menu button */}
+        <div className="flex lg:flex-1 items-center justify-end">
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-md p-2.5 text-foreground lg:hidden ring-1 ring-[hsl(var(--border))]"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open main menu"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+        </div>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div className="lg:hidden">
+            <div className="fixed inset-0 z-40 bg-black/40" onClick={() => setMobileOpen(false)} />
+            <div className="fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-y-auto bg-background shadow-xl ring-1 ring-[hsl(var(--border))]">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--border))]">
+                <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileOpen(false)}>
+                  <Image 
+                    src="/lockup-anti-white-logo.png" 
+                    alt="Regtime" 
+                    width={140} 
+                    height={32} 
+                    className="h-7 w-auto" 
+                  />
+                </Link>
+                <button
+                  type="button"
+                  className="rounded-md p-2.5 text-foreground ring-1 ring-[hsl(var(--border))]"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <div className="space-y-1 px-4 py-4">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="block rounded-lg px-3 py-2 text-base font-semibold text-foreground hover:bg-[hsl(var(--muted))]"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </nav>
+    </header>
+  );
+}
+```
+
+PHASE 2: PAGE STRUCTURE DEVELOPMENT
+====================================
+
+4. HOMEPAGE HERO SECTION
+-------------------------
+USER PROMPT: "Create an impressive hero section for the homepage with the brand messaging"
+
+ASSISTANT RESPONSE:
+"I'll create a compelling hero section that showcases Regtime's mission in affordable housing management with engaging visuals and clear messaging."
+
+EXACT CODE OUTPUT - app/page.tsx (Hero Section):
+```typescript
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import BrandHero from '@/components/brand/BrandHero';
+import StatCounter from '@/components/ui/StatCounter';
+
+export default function Home() {
+  return (
+    <div className="bg-background">
+      <Header />
+      
+      {/* Brand Hero Section */}
+      <BrandHero />
+
+      {/* Products Showcase */}
+      <div className="py-24 sm:py-32 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:text-center mb-16">
+            <p className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Full Lifecycle of Affordable Housing Management
+            </p>
+            <p className="mt-6 text-lg leading-8 text-white">
+              Our systems support creation of affordable units via state-sponsored incentives and provide ongoing leasing and compliance throughout the lifecycle of your project.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Foundation — Regtime Builder */}
+            <div className="relative overflow-hidden bg-[hsl(var(--card))] ring-1 ring-[hsl(var(--border))] rounded-2xl border hover:shadow-xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary to-blue-600 opacity-10" />
+              <div className="relative p-8">
+                <div className="flex justify-center mb-6">
+                  <span className="inline-flex items-center justify-center rounded-xl bg-white p-3 ring-1 ring-[hsl(var(--border))]">
+                    <Image
+                      src="/Regtime Builder Night 1080px.png"
+                      alt="Regtime Builder logo"
+                      width={160}
+                      height={160}
+                      className="h-16 w-auto"
+                      priority
+                    />
+                  </span>
+                </div>
+                <div className="text-center mb-6">
+                  <div className="h-20 flex flex-col justify-center">
+                    <div className="text-xl font-bold text-brand-primary">Model incentives, decide faster.</div>
+                  </div>
+                  <p className="mt-2 text-white">Plan affordable projects with incentive modeling, 
+                    subcontractor coordination, and progress reporting.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Growth — Regtime Marketer */}
+            <div className="relative overflow-hidden bg-[hsl(var(--card))] ring-1 ring-[hsl(var(--border))] rounded-2xl border hover:shadow-xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary to-blue-600 opacity-10" />
+              <div className="relative p-8">
+                <div className="flex justify-center mb-6">
+                  <span className="inline-flex items-center justify-center rounded-xl bg-white p-3 ring-1 ring-[hsl(var(--border))]">
+                    <Image
+                      src="/Regtime Marketer Night 1080px.png"
+                      alt="Regtime Marketer logo"
+                      width={160}
+                      height={160}
+                      className="h-16 w-auto"
+                    />
+                  </span>
+                </div>
+                <div className="text-center mb-6">
+                  <div className="h-20 flex flex-col justify-center">
+                    <div className="text-xl font-bold text-brand-primary">Lease faster with automated campaigns.</div>
+                  </div>
+                  <p className="mt-2 text-white">Automate housing connect marketing, application intake, and selection workflows in full compliance with HPD and HDC requirements.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Success — Regtime Manager */}
+            <div className="relative overflow-hidden bg-[hsl(var(--card))] ring-1 ring-[hsl(var(--border))] rounded-2xl border hover:shadow-xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary to-blue-600 opacity-10" />
+              <div className="relative p-8">
+                <div className="flex justify-center mb-6">
+                  <span className="inline-flex items-center justify-center rounded-xl bg-white p-3 ring-1 ring-[hsl(var(--border))]">
+                    <Image
+                      src="/Regtime Manager Night 1080px.png"
+                      alt="Regtime Manager logo"
+                      width={160}
+                      height={160}
+                      className="h-16 w-auto"
+                    />
+                  </span>
+                </div>
+                <div className="text-center mb-6">
+                  <div className="h-20 flex flex-col justify-center">
+                    <div className="text-xl font-bold text-brand-primary">Stay compliant while minimizing vacancies.</div>
+                  </div>
+                  <p className="mt-2 text-white">A workflow-driven compliance platform with regulatory
+                    tracking, project management, and custom reporting.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}
+```
+
+5. ABOUT PAGE CREATION
+----------------------
+USER PROMPT: "Create an About page with team information and company values"
+
+ASSISTANT RESPONSE:
+"I'll create a comprehensive About page showcasing the Regtime team, company values, and mission statement."
+
+EXACT CODE OUTPUT - app/(site)/about/page.tsx:
+```typescript
+'use client';
+
+import Image from 'next/image';
+import { Target, Award, Globe } from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Reveal from '@/components/ui/Reveal';
+import TiltCard from '@/components/ui/TiltCard';
+
+const values = [
+  {
+    name: 'Innovation',
+    description: "We continuously push the boundaries of what's possible in real estate technology.",
+    icon: Target,
+  },
+  {
+    name: 'Reliability',
+    description: 'Our platform provides consistent, dependable service that businesses can count on.',
+    icon: Award,
+  },
+  {
+    name: 'Global Impact',
+    description: "We're building solutions that help teams around the world work smarter.",
+    icon: Globe,
+  },
+];
+
+const team = [
+  { name: 'Yuri Geylik', role: 'CEO & Founder', image: '/team/Yuri_Geylik_Headshot copy.png', priority: true },
+  { name: 'Kirill Boyarkin', role: 'CTO', image: '/team/Kirill_Boyarkin_Headshot copy.png' },
+  { name: 'Omar Hashmi', role: 'Head of Revenue Operations', image: '/team/Omar_Hashmi_Headshot copy.png' },
+  { name: 'Anna Martynova', role: 'Director of Incentives', image: '/team/Anna_Martynova_Headshot copy.png' },
+  { name: 'Max Isakov', role: 'Director of Product', image: '/team/Max_Isakov_Headshot copy.png' },
+];
+
+export default function AboutPage() {
+  return (
+    <div className="bg-background">
+      <Header />
+      <main className="px-6 py-16 sm:py-24 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <Reveal>
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+              About Regtime
+            </h1>
+            <p className="mt-4 text-lg text-white max-w-3xl">
+              Regtime™ is a platform transforming the world of regulated and affordable housing. As a digital assistant for developers, agencies, and residents, it automates compliance, simplifies leasing, and empowers communities — making regulatory housing management not just easier, but smarter.
+            </p>
+          </Reveal>
+
+          {/* Leadership */}
+          <section className="mt-16">
+            <h2 className="text-2xl font-semibold text-foreground">Leadership</h2>
+            <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {team.map((person) => (
+                <TiltCard
+                  key={person.name}
+                  className="p-6 ring-1 ring-[hsl(var(--border))] bg-[hsl(var(--card))] rounded-2xl"
+                >
+                  <div className="relative aspect-square w-full rounded-xl overflow-hidden mb-4 bg-muted">
+                    <Image
+                      src={person.image}
+                      alt={`${person.name} headshot`}
+                      fill
+                      sizes="(min-width:1024px) 320px, (min-width:640px) 50vw, 100vw"
+                      className="object-cover"
+                      priority={person.priority}
+                      unoptimized
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">{person.name}</h3>
+                    <p className="text-sm text-white">{person.role}</p>
+                  </div>
+                </TiltCard>
+              ))}
+            </div>
+          </section>
+
+          {/* Values */}
+          <section className="mt-16">
+            <h2 className="text-2xl font-semibold text-foreground">Our Values</h2>
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {values.map((v) => (
+                <div
+                  key={v.name}
+                  className="rounded-2xl ring-1 ring-[hsl(var(--border))] p-6 bg-[hsl(var(--card))]"
+                >
+                  <v.icon className="h-6 w-6 text-brand-primary" />
+                  <h3 className="mt-4 text-lg font-semibold text-foreground">{v.name}</h3>
+                  <p className="text-sm text-white">{v.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+```
+
+PHASE 3: ADVANCED FEATURES & INTERACTIONS
+==========================================
+
+6. 3D GRAPHICS IMPLEMENTATION
+-----------------------------
+USER PROMPT: "Add impressive 3D graphics and animations to make the site stand out"
+
+ASSISTANT RESPONSE:
+"I'll implement advanced 3D graphics using Three.js and React Three Fiber to create stunning visual effects that align with your brand."
+
+EXACT IMPLEMENTATION STEPS:
+1. Added Three.js and React Three Fiber dependencies
+2. Created HolographicRibbon component with WebGL shaders
+3. Implemented ParticleGrid for interactive effects
+4. Added RegtimeSkyline3D for brand-themed visuals
+
+EXACT CODE OUTPUT - scenes/HolographicRibbon.tsx:
+```typescript
+'use client';
+
+import { useRef, useMemo, Suspense } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import * as THREE from 'three';
+
+function RibbonMesh({
+  intensity = 0.5,
+  speed = 1.0,
+  preset = 'depth',
+  additive = false
+}) {
+  const meshRef = useRef();
+  const { viewport } = useThree();
+  const { shouldReduceMotion } = useReducedMotion();
+
+  const BRAND = {
+    baby: '#78C7EA',
+    alice: '#DEEDF4',
+    deep:  '#496671',
+    cadet: '#9CB2BC',
+    night: '#111111',
+    dim:   '#636363',
+    white: '#FFFFFF',
+    anti:  '#EBEBEB'
+  };
+
+  const resolved = useMemo(() => {
+    switch (preset) {
+      case 'light':
+        return { A: BRAND.alice, B: BRAND.baby, sheen: BRAND.white };
+      case 'mono':
+        return { A: BRAND.anti, B: BRAND.alice, sheen: BRAND.baby };
+      case 'night':
+        return { A: BRAND.night, B: BRAND.deep, sheen: BRAND.baby };
+      case 'depth':
+      default:
+        return { A: BRAND.cadet, B: BRAND.deep, sheen: BRAND.baby };
+    }
+  }, [preset]);
+
+  const shaderMaterial = useMemo(() => {
+    return new THREE.ShaderMaterial({
+      uniforms: {
+        uTime: { value: 0 },
+        uIntensity: { value: intensity },
+        uResolution: { value: new THREE.Vector2(viewport.width, viewport.height) },
+        uColorA: { value: new THREE.Color(resolved.A) },
+        uColorB: { value: new THREE.Color(resolved.B) },
+        uSheen:  { value: new THREE.Color(resolved.sheen) }
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        uniform float uTime;
+        uniform float uIntensity;
+        void main() {
+          vUv = uv;
+          vec3 pos = position;
+          pos.z += sin(pos.x * 2.0 + uTime * 0.5) * 0.10 * uIntensity;
+          pos.z += cos(pos.y * 1.5 + uTime * 0.3) * 0.05 * uIntensity;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+        }
+      `,
+      fragmentShader: `
+        varying vec2 vUv;
+        uniform float uTime;
+        uniform float uIntensity;
+        uniform vec3 uColorA;
+        uniform vec3 uColorB;
+        uniform vec3 uSheen;
+
+        void main() {
+          vec2 uv = vUv;
+          float g = sin(uv.x * 3.14159) * cos(uv.y * 3.14159);
+          g += sin(uv.x * 10.0 + uTime * 0.2) * cos(uv.y * 8.0 + uTime * 0.15) * 0.1 * uIntensity;
+          
+          float t = smoothstep(0.0, 1.0, g * 0.5 + 0.5);
+          vec3 base = mix(uColorA, uColorB, t);
+          
+          float highlight = pow(1.0 - abs(t - 0.5) * 2.0, 3.0);
+          vec3 sheen = uSheen * highlight * 0.25 * uIntensity;
+          
+          vec3 color = base + sheen;
+          
+          float edge = smoothstep(0.0, 0.08, uv.x) * smoothstep(1.0, 0.92, uv.x)
+                     * smoothstep(0.0, 0.08, uv.y) * smoothstep(1.0, 0.92, uv.y);
+
+          gl_FragColor = vec4(color, edge * 0.85);
+        }
+      `,
+      transparent: true,
+      blending: additive ? THREE.AdditiveBlending : THREE.NormalBlending
+    });
+  }, [intensity, viewport, resolved, additive]);
+
+  useFrame((state) => {
+    if (!meshRef.current || shouldReduceMotion) return;
+    const time = state.clock.getElapsedTime() * speed;
+    shaderMaterial.uniforms.uTime.value = time;
+    meshRef.current.rotation.x = Math.sin(time * 0.1) * 0.05;
+    meshRef.current.rotation.y = Math.cos(time * 0.15) * 0.03;
+  });
+
+  return (
+    <mesh ref={meshRef} material={shaderMaterial}>
+      <planeGeometry args={[viewport.width * 1.2, viewport.height * 0.8, 32, 32]} />
+    </mesh>
+  );
+}
+
+export default function HolographicRibbon({ className = '', ...ribbonProps }) {
+  const { shouldReduceMotion } = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return (
+      <div className={`relative ${className}`}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            background: `linear-gradient(135deg, #9CB2BC, #496671)`,
+            opacity: 0.85
+          }} />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`relative ${className} pointer-events-none`}>
+      <Suspense fallback={<div style={{ background: 'linear-gradient(135deg, #9CB2BC, #496671)', opacity: 0.85 }} />}>
+        <Canvas
+          camera={{ position: [0, 0, 1], fov: 75 }}
+          dpr={[1, 2]}
+          performance={{ min: 0.5 }}
+          style={{ pointerEvents: 'none' }}
+        >
+          <RibbonMesh {...ribbonProps} />
+        </Canvas>
+      </Suspense>
+    </div>
+  );
+}
+```
+
+7. MOTION SYSTEM IMPLEMENTATION
+-------------------------------
+USER PROMPT: "Add sophisticated animations and motion effects throughout the site"
+
+ASSISTANT RESPONSE:
+"I'll create a comprehensive motion system with accessibility considerations and smooth animations."
+
+EXACT CODE OUTPUT - lib/motion.ts:
+```typescript
+export const ease = {
+  standard: [0.2, 0.8, 0.2, 1],
+  out: [0.16, 1, 0.3, 1],
+  bounce: [0.68, -0.55, 0.265, 1.55],
+  elastic: [0.25, 0.46, 0.45, 0.94]
+} as const;
+
+export const dur = {
+  xs: 0.18,
+  sm: 0.28,
+  md: 0.44,
+  lg: 0.8,
+  xl: 1.2
+} as const;
+
+export const spring = {
+  type: 'spring' as const,
+  stiffness: 220,
+  damping: 24,
+  mass: 1
+};
+
+export const springGentle = {
+  type: 'spring' as const,
+  stiffness: 120,
+  damping: 20,
+  mass: 0.8
+};
+
+export const springBouncy = {
+  type: 'spring' as const,
+  stiffness: 300,
+  damping: 18,
+  mass: 0.6
+};
+
+export const transitions = {
+  fade: {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 }
+  },
+  slideUp: {
+    initial: { opacity: 0, y: 16 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -16 }
+  },
+  slideDown: {
+    initial: { opacity: 0, y: -16 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -16 }
+  },
+  slideLeft: {
+    initial: { opacity: 0, x: 16 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -16 }
+  },
+  slideRight: {
+    initial: { opacity: 0, x: -16 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 16 }
+  },
+  scale: {
+    initial: { opacity: 0, scale: 0.95 },
+    animate: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 0.95 }
+  },
+  scaleUp: {
+    initial: { opacity: 0, scale: 0.8 },
+    animate: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 0.8 }
+  }
+} as const;
+```
+
+EXACT CODE OUTPUT - hooks/useReducedMotion.ts:
+```typescript
+'use client';
+
+import { useState, useEffect } from 'react';
+
+type MotionPreference = 'system' | 'on' | 'off';
+
+export function useReducedMotion() {
+  const [preference, setPreference] = useState<MotionPreference>('system');
+  const [systemPrefersReduced, setSystemPrefersReduced] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setSystemPrefersReduced(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setSystemPrefersReduced(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+
+    const stored = localStorage.getItem('ui:reducedMotion') as MotionPreference;
+    if (stored && ['system', 'on', 'off'].includes(stored)) {
+      setPreference(stored);
+    }
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  const setMotionPreference = (pref: MotionPreference) => {
+    setPreference(pref);
+    localStorage.setItem('ui:reducedMotion', pref);
+  };
+
+  const shouldReduceMotion = 
+    preference === 'on' || 
+    (preference === 'system' && systemPrefersReduced);
+
+  return {
+    shouldReduceMotion,
+    preference,
+    setMotionPreference,
+    systemPrefersReduced
+  };
+}
+```
+
+8. HUBSPOT FORM INTEGRATION
+---------------------------
+USER PROMPT: "Integrate HubSpot forms for lead generation"
+
+ASSISTANT RESPONSE:
+"I'll integrate HubSpot forms with proper error handling and brand styling."
+
+EXACT CODE OUTPUT - components/HubSpotForm.tsx:
+```typescript
+'use client';
+
+import { useEffect, useRef } from 'react';
+
+export default function HubSpotForm({
+  className = '',
+  portalId = '48321391',
+  formId = '27b23585-a05a-4eb3-8cdc-e2eb354f5044',
+  region = 'na1',
+}) {
+  const containerRef = useRef();
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    container.innerHTML = '';
+    const placeholder = document.createElement('div');
+    placeholder.className = 'hs-form-frame';
+    placeholder.setAttribute('data-portal-id', portalId);
+    placeholder.setAttribute('data-form-id', formId);
+    placeholder.setAttribute('data-region', region);
+    container.appendChild(placeholder);
+
+    const src = `https://js.hsforms.net/forms/embed/${portalId}.js`;
+    let script = Array.from(document.scripts).find((s) => s.src === src);
+    let appendedScript = false;
+
+    if (!script) {
+      script = document.createElement('script');
+      script.src = src;
+      script.defer = true;
+      document.body.appendChild(script);
+      appendedScript = true;
+    }
+
+    const moveIntoContainerIfNeeded = (node) => {
+      if (!(node instanceof HTMLElement)) return;
+
+      const iframe = (node.matches('iframe.hs-form-iframe') ? node : node.querySelector('iframe.hs-form-iframe'));
+      if (!iframe) return;
+
+      const srcUrl = iframe.getAttribute('src') || '';
+      if (!srcUrl.includes(`/${portalId}/${formId}`)) return;
+
+      if (container.contains(iframe)) return;
+
+      const wrapper = iframe.parentElement ?? iframe;
+      container.innerHTML = '';
+      container.appendChild(wrapper);
+    };
+
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        m.addedNodes.forEach(moveIntoContainerIfNeeded);
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    const tick = requestAnimationFrame(() => {
+      document.querySelectorAll('iframe.hs-form-iframe').forEach((node) => moveIntoContainerIfNeeded(node));
+    });
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(tick);
+    };
+  }, [portalId, formId, region]);
+
+  return (
+    <div className={className}>
+      <div ref={containerRef} className="relative w-full min-h-[640px]" />
+    </div>
+  );
+}
+```
+
+PHASE 4: DEBUGGING & ERROR RESOLUTION
+======================================
+
+9. GA4 TRACKING ERROR REPORT
+----------------------------
+USER PROMPT: "I'm getting this error: Fetch failed loading: POST https://www.google-analytics.com/g/collect..."
+
+ASSISTANT RESPONSE:
+"This is a common issue with Google Analytics. Let me help you debug and fix this tracking problem."
+
+DEBUGGING STEPS TAKEN:
+1. Analyzed the error - likely ad blocker or network restriction
+2. Checked GA4 implementation in layout.tsx
+3. Enhanced error handling and loading logic
+
+EXACT CODE CHANGES - app/layout.tsx (GA4 Section):
+```typescript
+// BEFORE (problematic implementation):
+{(process.env.NEXT_PUBLIC_GA_ID || 'G-51FVQWME6G') && (
+  <>
+    <Script
+      id="ga4"
+      strategy="afterInteractive"
+      src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID || 'G-51FVQWME6G'}`}
+      onLoad={() => {
+        // Complex timing logic that caused issues
+      }}
+    />
+    <Script id="ga4-inline" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID || 'G-51FVQWME6G'}');
+      `}
+    </Script>
+  </>
+)}
+
+// AFTER (fixed implementation):
+{(process.env.NEXT_PUBLIC_GA_ID || 'G-51FVQWME6G') && (
+  <>
+    <Script
+      id="ga4"
+      strategy="afterInteractive"
+      src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID || 'G-51FVQWME6G'}`}
+    />
+    <Script id="ga4-inline" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID || 'G-51FVQWME6G'}');
+      `}
+    </Script>
+  </>
+)}
+```
+
+10. SCRIPT COMPONENT ERROR
+--------------------------
+TERMINAL ERROR: "Event handlers cannot be passed to Client Component props"
+BROWSER ERROR: Same error with detailed stack trace
+
+USER PROMPT: "I'm getting this error in the terminal and browser"
+
+ASSISTANT RESPONSE:
+"This is a Next.js App Router issue with Script components in server-rendered layouts. The onLoad event handler is causing the problem."
+
+ROOT CAUSE ANALYSIS:
+- Next.js Script components in server-rendered layouts cannot accept event handlers
+- The onLoad prop was causing the client component error
+- Complex timing logic was unnecessary for GA4
+
+EXACT FIX APPLIED:
+```typescript
+// REMOVED the problematic onLoad handler:
+<Script
+  id="ga4"
+  strategy="afterInteractive"
+  src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID || 'G-51FVQWME6G'}`}
+  // REMOVED: onLoad={() => { /* complex logic */ }}
+/>
+```
+
+VERIFICATION STEPS:
+1. Removed all onLoad handlers from Script components
+2. Simplified GA4 loading to use standard afterInteractive strategy
+3. Tested in development mode
+4. Confirmed error resolution
+
+PHASE 5: DEPLOYMENT & PRODUCTION
+=================================
+
+11. FIRST DEPLOYMENT REQUEST
+----------------------------
+USER PROMPT: "<<HUMAN_CONVERSATION_START>>"
+
+ASSISTANT RESPONSE:
+"I'll help you publish this application to Bolt Hosting."
+
+EXACT DEPLOYMENT ACTION:
+```xml
