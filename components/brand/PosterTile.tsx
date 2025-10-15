@@ -81,7 +81,7 @@ export default function PosterTile({
         {logo && (
           <div className="absolute top-4 right-4">
             <Image
-              src="/IconMark White 540px.png"
+              src="/IconMark-White-540px.png"
               alt="Regtime"
               width={24}
               height={24}
