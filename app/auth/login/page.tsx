@@ -2,7 +2,7 @@
 
 import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useAuth } from '@/lib/auth/AuthProvider';
+import { supabase } from '@/lib/supabase/client';
 import Image from 'next/image';
 
 function LoginForm() {
@@ -12,7 +12,6 @@ function LoginForm() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { signIn } = useAuth();
 
   const redirectTo = searchParams.get('redirectedFrom') || '/dashboard';
 
@@ -23,12 +22,16 @@ function LoginForm() {
 
     try {
       const emailToUse = email.includes('@') ? email : `${email}@regtime.com`;
-      const { error } = await signIn(emailToUse, password);
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: emailToUse,
+        password,
+      });
 
-      if (error) {
-        setError(error.message || 'Invalid credentials');
+      if (signInError) {
+        setError(signInError.message || 'Invalid credentials');
       } else {
         router.push(redirectTo);
+        router.refresh();
       }
     } catch (err) {
       setError('An unexpected error occurred');
