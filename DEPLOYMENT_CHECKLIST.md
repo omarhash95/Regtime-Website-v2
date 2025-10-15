@@ -1,5 +1,19 @@
 # Deployment Checklist
 
+## ✅ Recent Fixes (2025-10-15)
+
+### Publishing Error: "no such file or directory"
+**Fixed:**
+1. ✅ Created `.vercelignore` to exclude unnecessary files
+2. ✅ Created `vercel.json` with explicit build configuration
+3. ✅ Updated `next.config.js` with TypeScript settings
+4. ✅ Fixed auth route prerendering with dynamic layout
+5. ✅ Removed `useAuth` dependency from login page
+
+**Build Status:** ✅ All 21 routes building successfully
+
+---
+
 ## Pre-Deployment Setup
 
 ### ✅ Database Setup
