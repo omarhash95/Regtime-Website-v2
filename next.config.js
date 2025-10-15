@@ -2,19 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   eslint: { ignoreDuringBuilds: true },
-  images: {
+  images: { 
     unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.pexels.com',
       },
-      {
-        protocol: 'https',
-        hostname: 'nzjmhnesxjijfwloqouc.supabase.co',
-      },
     ],
   },
+  output: 'export',
 }
 
 module.exports = nextConfig
