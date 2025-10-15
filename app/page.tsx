@@ -68,7 +68,7 @@ export default function Home() {
                   <div className="flex justify-center mb-6">
                     <span className="inline-flex items-center justify-center rounded-xl bg-white p-3 ring-1 ring-[hsl(var(--border))]">
                       <Image
-                        src="/Regtime-Builder-Night-1080px.png"
+                        src="/Regtime Builder Night 1080px.png"
                         alt="Regtime Builder logo"
                         width={160}
                         height={160}
@@ -96,7 +96,7 @@ export default function Home() {
                   <div className="flex justify-center mb-6">
                     <span className="inline-flex items-center justify-center rounded-xl bg-white p-3 ring-1 ring-[hsl(var(--border))]">
                       <Image
-                        src="/Regtime-Marketer-Night-1080px.png"
+                        src="/Regtime Marketer Night 1080px.png"
                         alt="Regtime Marketer logo"
                         width={160}
                         height={160}
@@ -123,7 +123,7 @@ export default function Home() {
                   <div className="flex justify-center mb-6">
                     <span className="inline-flex items-center justify-center rounded-xl bg-white p-3 ring-1 ring-[hsl(var(--border))]">
                       <Image
-                        src="/Regtime-Manager-Night-1080px.png"
+                        src="/Regtime Manager Night 1080px.png"
                         alt="Regtime Manager logo"
                         width={160}
                         height={160}

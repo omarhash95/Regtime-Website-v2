@@ -47,7 +47,7 @@ function LoginForm() {
           <div className="text-center space-y-2">
             <div className="flex justify-center mb-4">
               <Image
-                src="/Limited-Night-1080px.png"
+                src="/Limited Night 1080px.png"
                 alt="Regtime"
                 width={180}
                 height={60}

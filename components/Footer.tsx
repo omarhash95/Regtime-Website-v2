@@ -44,7 +44,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-flex items-center gap-2">
               <Image
-                src="/Wordmark-White-1080px.png"
+                src="/Wordmark White 1080px.png"
                 alt="Regtime"
                 width={160}
                 height={40}
