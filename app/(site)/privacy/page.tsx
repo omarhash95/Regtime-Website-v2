@@ -137,7 +137,7 @@ export default function Privacy() {
             <h2 className="mt-16 text-2xl font-bold tracking-tight text-foreground">Changes to This Policy</h2>
             <p className="mt-6">
               We may update this Privacy Policy from time to time. We will notify you of any material 
-              changes by posting the new policy on our website and updating the "Last updated" date.
+              changes by posting the new policy on our website and updating the &ldquo;Last updated&rdquo; date.
             </p>
 
             <h2 className="mt-16 text-2xl font-bold tracking-tight text-foreground">Contact Us</h2>

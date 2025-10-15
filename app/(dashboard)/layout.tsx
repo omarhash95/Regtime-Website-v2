@@ -1,6 +1,8 @@
 import { AppShell } from '@/components/app/AppShell';
 import { AuthProvider } from '@/lib/auth/AuthProvider';
 
+export const dynamic = 'force-dynamic';
+
 export default function DashboardLayout({
   children,
 }: {

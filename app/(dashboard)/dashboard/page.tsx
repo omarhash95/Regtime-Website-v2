@@ -80,7 +80,7 @@ export default function DashboardPage() {
       <div>
         <h2 className="text-3xl font-bold text-[#111111]">Dashboard Overview</h2>
         <p className="text-[#636363] mt-2">
-          Welcome back! Here's what's happening with your projects.
+          Welcome back! Here&apos;s what&apos;s happening with your projects.
         </p>
       </div>
 

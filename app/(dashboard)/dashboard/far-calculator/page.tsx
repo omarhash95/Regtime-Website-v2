@@ -79,7 +79,7 @@ export default function FARCalculatorPage() {
       <div className="bg-[#78C7EA]/5 border border-[#78C7EA]/20 rounded-xl p-6">
         <h3 className="font-semibold text-[#111111] mb-2">About FAR</h3>
         <p className="text-sm text-[#636363] mb-4">
-          Floor Area Ratio (FAR) is the ratio of a building's total floor area to the size of the lot on which it is built. It's a key zoning regulation that controls building density.
+          Floor Area Ratio (FAR) is the ratio of a building&apos;s total floor area to the size of the lot on which it is built. It&apos;s a key zoning regulation that controls building density.
         </p>
         <p className="text-sm text-[#636363]">
           <strong className="text-[#111111]">Example:</strong> A 10,000 sq ft lot with a FAR of 2.0 allows for a maximum of 20,000 sq ft of floor space across all floors.
