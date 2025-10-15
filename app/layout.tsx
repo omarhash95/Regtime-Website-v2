@@ -18,8 +18,18 @@ const inter = Inter({
 const aspekta = inter;
 
 export const metadata: Metadata = {
-  title: 'Regtime',
-  description: 'Transforming affordable housing management with intelligent automation and compliance tools.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://regtime.com'),
+  title: 'Regtime - Professional Time Management Solutions',
+  description: 'Transform your business with Regtime\'s comprehensive time management platform.',
+  icons: {
+    icon: '/IconMark-Alice-Blue-540px.png',
+    apple: '/IconMark-Alice-Blue-540px.png',
+  },
+  openGraph: {
+    title: 'Regtime - Professional Time Management Solutions',
+    description: 'Transform your business with Regtime\'s comprehensive time management platform.',
+    images: ['/IconMark-Alice-Blue-540px.png'],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
