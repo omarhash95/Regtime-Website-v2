@@ -1,35 +1,57 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import Script from 'next/script';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import RouteTransition from '@/components/ux/RouteTransition';
-import ToastRoot from '@/components/toast/ToastRoot';
-
-const aspekta = localFont({
-  src: [
-    { path: '../public/fonts/Aspekta-300.woff2', weight: '300', style: 'normal' },
-    { path: '../public/fonts/Aspekta-400.woff2', weight: '400', style: 'normal' },
-    { path: '../public/fonts/Aspekta-500.woff2', weight: '500', style: 'normal' },
-    { path: '../public/fonts/Aspekta-700.woff2', weight: '700', style: 'normal' },
-  ],
-  variable: '--font-aspekta',
-  display: 'swap',
-});
+import { ToastProvider } from '@/components/toast/ToastProvider';
 
 export const metadata: Metadata = {
-  title: 'Regtime',
-  description: 'Transforming affordable housing management with intelligent automation and compliance tools.',
+  title: 'Regtime - Professional Time Management Solutions',
+  description: 'Transform your business with Regtime\'s comprehensive time management platform. Streamline operations, boost productivity, and drive growth.',
+  keywords: 'time management, business productivity, project management, team collaboration',
+  authors: [{ name: 'Regtime' }],
+  creator: 'Regtime',
+  publisher: 'Regtime',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://regtime.com'),
+  openGraph: {
+    title: 'Regtime - Professional Time Management Solutions',
+    description: 'Transform your business with Regtime\'s comprehensive time management platform',
+    url: 'https://regtime.com',
+    siteName: 'Regtime',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Regtime - Professional Time Management Solutions',
+    description: 'Transform your business with Regtime\'s comprehensive time management platform',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={`${aspekta.variable} bg-background text-foreground antialiased`}>
+      <body className="bg-background text-foreground antialiased font-sans">
         <SmoothScrollProvider>
           <RouteTransition>
-            <ToastRoot>{children}</ToastRoot>
+            <ToastProvider>{children}</ToastProvider>
           </RouteTransition>
         </SmoothScrollProvider>
 
