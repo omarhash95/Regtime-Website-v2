@@ -84,7 +84,7 @@ export default function GeometricHero({ className = '' }: GeometricHeroProps) {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <Image
-            src="/Lockup-White-1080px.png"
+            src="/Lockup White 1080px.png"
             alt="Regtime"
             width={200}
             height={60}
