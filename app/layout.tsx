@@ -1,21 +1,21 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import RouteTransition from '@/components/ux/RouteTransition';
 import ToastRoot from '@/components/toast/ToastRoot';
 
-const aspekta = localFont({
-  src: [
-    { path: '../public/fonts/Aspekta-300.woff2', weight: '300', style: 'normal' },
-    { path: '../public/fonts/Aspekta-400.woff2', weight: '400', style: 'normal' },
-    { path: '../public/fonts/Aspekta-500.woff2', weight: '500', style: 'normal' },
-    { path: '../public/fonts/Aspekta-700.woff2', weight: '700', style: 'normal' },
-  ],
+// Use Inter font from Google Fonts as a replacement for the missing Aspekta font files
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
   variable: '--font-aspekta',
   display: 'swap',
 });
+
+// Keep the aspekta variable name for compatibility with existing CSS
+const aspekta = inter;
 
 export const metadata: Metadata = {
   title: 'Regtime',
