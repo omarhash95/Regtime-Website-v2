@@ -1,0 +1,14 @@
+# Documentation
+*.md
+!README.md
+
+# Development files
+.bolt/
+conversation-history-complete.txt
+scripts/doctor.mjs
+
+# Cache and logs
+.next/cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
