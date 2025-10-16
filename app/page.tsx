@@ -23,14 +23,14 @@ const products = [
   },
   {
     name: 'Regtime Marketer',
-    image: '/Regtime Marketer Cadet 1080px.png',
+    image: '/regtime-marketer-cadet-1080px.png',
     description: 'Specialized tools for marketing teams and campaigns',
     features: ['Campaign tracking', 'ROI analytics', 'Client billing', 'Performance metrics'],
     color: 'from-teal-500 to-teal-600'
   },
   {
     name: 'Regtime Builder',
-    image: '/Regtime Builder Maize 1080px.png',
+    image: '/regtime-builder-maize-1080px.png',
     description: 'Purpose-built for construction and project-based work',
     features: ['Job site tracking', 'Equipment monitoring', 'Labor cost analysis', 'Progress reporting'],
     color: 'from-yellow-500 to-yellow-600'
