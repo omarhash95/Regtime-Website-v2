@@ -1,7 +1,13 @@
 'use client';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import HolographicRibbon from '@/scenes/HolographicRibbon';
+
+const HolographicRibbon = dynamic(() => import('@/scenes/HolographicRibbon'), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 bg-gradient-to-br from-[#9CB2BC] to-[#496671] opacity-85" />
+  )
+});
 
 interface Hero3DProps {
   height?: number;
@@ -11,8 +17,8 @@ interface Hero3DProps {
   className?: string;
 }
 
-export default function Hero3D({ 
-  height = 420, 
+export default function Hero3D({
+  height = 420,
   intensity = 0.35,
   speed = 0.8,
   parallaxStrength = 0.1,
@@ -23,21 +29,21 @@ export default function Hero3D({
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     setShouldShow3D(!mq.matches);
-    
+
     const handleChange = (e: MediaQueryListEvent) => {
       setShouldShow3D(!e.matches);
     };
-    
+
     mq.addEventListener('change', handleChange);
     return () => mq.removeEventListener('change', handleChange);
   }, []);
 
   return (
-    <div 
+    <div
       className={`relative ${className}`}
       style={{ width: '100%', height }}
     >
-      <HolographicRibbon 
+      <HolographicRibbon
         preset="depth"
         intensity={intensity}
         speed={speed}
