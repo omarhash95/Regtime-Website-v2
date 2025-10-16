@@ -57,9 +57,9 @@ export default function LogoOverImage({
     lg: 'w-16 h-16'
   };
 
-  const logoSrc = logoVariant === 'light' 
-    ? '/IconMark White 540px.png'
-    : '/IconMark Night 540px.png';
+  const logoSrc = logoVariant === 'light'
+    ? '/IconMark-White-540px.png'
+    : '/IconMark-Night-540px.png';
 
   return (
     <div className={`relative overflow-hidden ${className}`}>

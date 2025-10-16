@@ -11,7 +11,7 @@ const services = [
   {
     name: 'Regtime Builder',
     description: 'Helps property owners create affordable housing using incentive programs, speeding up decisions and lowering costs.',
-    image: '/Regtime Builder Night 1080px.png',
+    image: '/Regtime-Builder-Night-1080px.png',
     features: [
       'Incentive modeling',
       'Workflow templates',
@@ -24,7 +24,7 @@ const services = [
   {
     name: 'Regtime Marketer',
     description: 'Automates the leasing of affordable units through a user-friendly dashboard.',
-    image: '/Regtime Marketer Night 1080px.png',
+    image: '/Regtime-Marketer-Night-1080px.png',
     features: [
       'Campaign tracking',
       'ROI analytics',
@@ -37,7 +37,7 @@ const services = [
   {
     name: 'Regtime Manager',
     description: 'Manages compliance and re-rentals for regulated housing with a workflow-driven platform. Serving over 20,000 users monthly, including tenants and applicants.',
-    image: '/Regtime Manager Night 1080px.png',
+    image: '/Regtime-Manager-Night-1080px.png',
     features: [
       'Advanced time tracking',
       'Project management',

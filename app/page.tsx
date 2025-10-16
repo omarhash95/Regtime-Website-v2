@@ -16,7 +16,7 @@ import FeaturesSection from '@/components/sections/FeaturesSection';
 const products = [
   {
     name: 'Regtime Manager',
-    image: '/Regtime Manager Blue 1080px.png',
+    image: '/Regtime-Manager-Blue-1080px.png',
     description: 'Comprehensive time management for teams and projects',
     features: ['Advanced time tracking', 'Project management', 'Team collaboration', 'Custom reporting'],
     color: 'from-blue-500 to-blue-600'

@@ -39,7 +39,7 @@ export default function ShowcaseGeometric({ className = '' }: ShowcaseGeometricP
           >
             <GeometricFrame variant="angular" animate className="aspect-[4/3]">
               <Image
-                src="/brand/geometric-buildings.jpg"
+                src="/brand/hero-cityscape.jpg"
                 alt="Urban architecture with geometric framing"
                 fill
                 className="object-cover"
