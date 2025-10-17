@@ -1,15 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  eslint: { ignoreDuringBuilds: true },
+
+  // Disable SWC completely for WebContainer compatibility
+  swcMinify: false,
+
+  // Force Babel transforms instead of SWC
+  experimental: {
+    forceSwcTransforms: false,
+  },
+
+  // Skip linting during builds
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+
+  // TypeScript checking
   typescript: {
     ignoreBuildErrors: false,
   },
-  swcMinify: false,          // disable SWC’s minifier
-  experimental: {
-    // In some cases you might need to tell Next to fall back on Babel transforms
-    // forceSwcTransforms: false
-  },
+
+  // Image optimization
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -23,24 +34,40 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    forceSwcTransforms: false,
-  },
-  // Optimize webpack for production builds
+
+  // Webpack configuration
   webpack: (config, { isServer }) => {
-    // Suppress warnings about punycode and critical-dependencies
+    // Suppress warnings
     config.ignoreWarnings = [
       { module: /node_modules\/punycode/ },
       { message: /Critical dependency: the request of a dependency is an expression/ },
     ];
 
+    // Fallback for node modules in browser
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+        crypto: false,
+      };
+    }
+
+    // Optimize for WebContainer - disable minification
+    config.optimization = {
+      ...config.optimization,
+      minimize: process.env.NODE_ENV === 'production',
+      minimizer: [],
+    };
+
     return config;
   },
-  // Skip pre-rendering for dynamic routes during build
+
+  // Generate unique build ID
   generateBuildId: async () => {
     return 'build-' + Date.now();
   },
 }
 
 module.exports = nextConfig
-
