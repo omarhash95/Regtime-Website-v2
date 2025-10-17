@@ -5,6 +5,11 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  swcMinify: false,          // disable SWC’s minifier
+  experimental: {
+    // In some cases you might need to tell Next to fall back on Babel transforms
+    // forceSwcTransforms: false
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -38,3 +43,4 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+
