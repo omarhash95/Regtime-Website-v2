@@ -5,6 +5,8 @@ import Script from 'next/script';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import RouteTransition from '@/components/ux/RouteTransition';
 import ToastRoot from '@/components/toast/ToastRoot';
+import DiagnosticPanel from '@/components/DiagnosticPanel';
+import DiagnosticInitializer from '@/components/DiagnosticInitializer';
 
 // Use Inter font from Google Fonts as a replacement for the missing Aspekta font files
 const inter = Inter({
@@ -40,11 +42,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className={`${aspekta.variable} bg-background text-foreground antialiased`}>
+        <DiagnosticInitializer />
         <SmoothScrollProvider>
           <RouteTransition>
             <ToastRoot>{children}</ToastRoot>
           </RouteTransition>
         </SmoothScrollProvider>
+        <DiagnosticPanel />
 
         {/* HubSpot tracking (optional) */}
         {(process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || '48321391') && (
