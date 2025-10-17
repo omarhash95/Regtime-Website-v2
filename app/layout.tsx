@@ -22,7 +22,10 @@ export const metadata: Metadata = {
   title: 'Regtime - Professional Time Management Solutions',
   description: 'Transform your business with Regtime\'s comprehensive time management platform.',
   icons: {
-    icon: '/IconMark-Alice-Blue-540px.png',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/IconMark-Alice-Blue-540px.png' }
+    ],
     apple: '/IconMark-Alice-Blue-540px.png',
   },
   openGraph: {
