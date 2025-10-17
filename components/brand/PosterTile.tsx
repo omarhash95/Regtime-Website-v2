@@ -20,7 +20,7 @@ interface PosterTileProps {
  * PosterTile - Social media style poster tiles
  * 
  * Usage examples:
- * <PosterTile variant="image" image="/photo.jpg" logo />
+ * <PosterTile variant="image" image="/brand/interior-workspace.jpg" logo />
  * <PosterTile variant="headline-baby-blue" title="Your Message Here" />
  * <PosterTile variant="dark-copy-block" title="Platform" caption="Description text" />
  */

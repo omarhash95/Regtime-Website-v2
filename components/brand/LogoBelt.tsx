@@ -17,7 +17,7 @@ const products = [
   },
   {
     name: 'Regtime Builder',
-    logo: '/regtime-builder-maize-1080px.png',
+    logo: '/Regtime-Builder-Night-1080px.png',
     description: 'Construction project tracking'
   }
 ];

@@ -30,7 +30,7 @@ const products = [
   },
   {
     name: 'Regtime Builder',
-    image: '/regtime-builder-maize-1080px.png',
+    image: '/Regtime-Builder-Night-1080px.png',
     description: 'Purpose-built for construction and project-based work',
     features: ['Job site tracking', 'Equipment monitoring', 'Labor cost analysis', 'Progress reporting'],
     color: 'from-yellow-500 to-yellow-600'
