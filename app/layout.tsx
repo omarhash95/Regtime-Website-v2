@@ -2,11 +2,13 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import RouteTransition from '@/components/ux/RouteTransition';
 import ToastRoot from '@/components/toast/ToastRoot';
-import DiagnosticPanel from '@/components/DiagnosticPanel';
-import DiagnosticInitializer from '@/components/DiagnosticInitializer';
+
+const DiagnosticPanel = dynamic(() => import('@/components/DiagnosticPanel'), { ssr: false });
+const DiagnosticInitializer = dynamic(() => import('@/components/DiagnosticInitializer'), { ssr: false });
 
 // Use Inter font from Google Fonts as a replacement for the missing Aspekta font files
 const inter = Inter({
