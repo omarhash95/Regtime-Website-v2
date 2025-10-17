@@ -1,4 +1,4 @@
-Build Attempt: 2025-10-17T01:27:46.514Z
+Build Attempt: 2025-10-17T01:33:54.338Z
 ================================================================================
 
 Node version: v20.19.1
@@ -130,12 +130,7 @@ Diagnostic Output:
    - public/wordmark-white-logo.png (58 bytes)
 
 3. Checking for missing file references...
-❌ Missing files referenced in code:
-   - /regtime-builder-maize-1080px.png
-   - /hero.jpg
-   - /dark-building.jpg
-   - /light-sky.jpg
-   - /photo.jpg
+✅ All referenced image files exist
 
 4. Checking environment variables...
 ✅ Supabase environment variables configured
