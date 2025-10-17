@@ -307,7 +307,7 @@ Run these commands in the terminal:
 rm -rf .next
 
 # Run a fresh build
-npm run build
+rm -rf .next
 ```
 
 ### Step 3: Verify Build Output
