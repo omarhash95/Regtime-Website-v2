@@ -1,0 +1,150 @@
+Build Attempt: 2025-10-17T01:33:54.338Z
+================================================================================
+
+Node version: v20.19.1
+
+npm version: 10.8.2
+
+
+Package: nextjs@0.1.0
+Next.js: ^14.2.32
+React: 18.2.0
+
+Build Output:
+--------------------------------------------------------------------------------
+
+> nextjs@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.32
+  - Environments: .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/21) ...
+   Generating static pages (5/21) 
+   Generating static pages (10/21) 
+   Generating static pages (15/21) 
+ ✓ Generating static pages (21/21)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    10.1 kB         164 kB
+├ ○ /_not-found                          875 B          88.2 kB
+├ ○ /about                               4.16 kB         158 kB
+├ ƒ /api/auth/user                       0 B                0 B
+├ ƒ /api/dashboard/metrics               0 B                0 B
+├ ○ /api/health                          0 B                0 B
+├ ƒ /api/properties/search-bbl           0 B                0 B
+├ ƒ /auth/login                          1.74 kB         140 kB
+├ ○ /contact                             4.42 kB         158 kB
+├ ƒ /dashboard                           2.03 kB        98.6 kB
+├ ƒ /dashboard/far-calculator            1.86 kB        89.2 kB
+├ ƒ /dashboard/help                      2.25 kB        89.6 kB
+├ ƒ /dashboard/import-export             1.64 kB          89 kB
+├ ƒ /dashboard/project-management        1.95 kB        89.3 kB
+├ ƒ /dashboard/projects                  1.7 kB         98.3 kB
+├ ƒ /dashboard/property-search           2.15 kB        89.5 kB
+├ ○ /marketplace                         5.39 kB         159 kB
+├ ○ /privacy                             208 B           154 kB
+└ ○ /services                            1 kB            154 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/117-61f736b9816bfe5e.js       31.6 kB
+  ├ chunks/fd9d1056-8ef33f5ef9456d1f.js  53.7 kB
+  └ other shared chunks (total)          2.09 kB
+
+
+ƒ Middleware                             26.4 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+--------------------------------------------------------------------------------
+
+BUILD STATUS: SUCCESS
+
+
+================================================================================
+Diagnostic Output:
+================================================================================
+=== Deployment Debug Tool ===
+
+1. Checking for files with spaces or special characters...
+✅ No problematic files found in public/
+
+2. Checking for placeholder/dummy binary files...
+⚠️  Found suspiciously small binary files (possible placeholders):
+   - public/IconMark-Alice-Blue-540px.png (20 bytes)
+   - public/IconMark-Dim-Gray-540px.png (20 bytes)
+   - public/IconMark-Night-540px.png (20 bytes)
+   - public/IconMark-White-540px.png (20 bytes)
+   - public/Limited-Alice-Blue-1080px.png (20 bytes)
+   - public/Limited-Anti-White-1080px.png (20 bytes)
+   - public/Limited-Baby-Blue-1080px.png (20 bytes)
+   - public/Limited-Cadet-1080px.png (20 bytes)
+   - public/Limited-Dim-Gray-1080px.png (20 bytes)
+   - public/Limited-Maize-1080px.png (20 bytes)
+   - public/Limited-Night-1080px.png (20 bytes)
+   - public/Limited-White-1080px.png (20 bytes)
+   - public/Lockup-Anti-White-1080px.png (20 bytes)
+   - public/Lockup-Baby-Blue-1080px.png (20 bytes)
+   - public/Lockup-Dim-Gray-1080px.png (20 bytes)
+   - public/Lockup-Maize-1080px.png (20 bytes)
+   - public/Lockup-Night-1080px.png (20 bytes)
+   - public/Lockup-White-1080px.png (20 bytes)
+   - public/Regtime-Builder-Night-1080px.png (20 bytes)
+   - public/Regtime-Manager-Blue-1080px.png (20 bytes)
+   - public/Regtime-Manager-Night-1080px.png (20 bytes)
+   - public/Regtime-Manager-White-1080px.png (20 bytes)
+   - public/Regtime-Marketer-Night-1080px.png (20 bytes)
+   - public/Regtime-Marketer-White-1080px.png (74 bytes)
+   - public/Vertical-Alice-Blue-1080px.png (20 bytes)
+   - public/Vertical-Anti-White-1080px.png (20 bytes)
+   - public/Vertical-Baby-Blue-1080px.png (20 bytes)
+   - public/Vertical-Cadet-1080px.png (20 bytes)
+   - public/Vertical-Dim-Gray-1080px.png (20 bytes)
+   - public/Vertical-Maize-1080px.png (20 bytes)
+   - public/Vertical-Night-1080px.png (20 bytes)
+   - public/Vertical-White-1080px.png (20 bytes)
+   - public/Wordmark-Alice-Blue-1080px.png (20 bytes)
+   - public/Wordmark-Anti-White-1080px.png (20 bytes)
+   - public/Wordmark-Baby-Blue-1080px.png (20 bytes)
+   - public/Wordmark-Cadet-1080px.png (20 bytes)
+   - public/Wordmark-Dim-Gray-1080px.png (20 bytes)
+   - public/Wordmark-Maize-1080px.png (20 bytes)
+   - public/Wordmark-Night-1080px.png (20 bytes)
+   - public/Wordmark-White-1080px.png (20 bytes)
+   - public/favicon.ico (0 bytes)
+   - public/regtime-marketer-cadet-1080px.png (20 bytes)
+   - public/regtime-marketer-white-logo.png (74 bytes)
+   - public/team/anna-martynova-headshot.png (20 bytes)
+   - public/team/kirill-boyarkin-headshot.png (20 bytes)
+   - public/team/max-isakov-headshot.png (20 bytes)
+   - public/team/omar-hashmi-headshot.png (20 bytes)
+   - public/team/yuri-geylik-headshot.png (20 bytes)
+   - public/wordmark-white-logo.png (58 bytes)
+
+3. Checking for missing file references...
+✅ All referenced image files exist
+
+4. Checking environment variables...
+✅ Supabase environment variables configured
+
+5. Checking Next.js configuration...
+✅ next.config.js exists
+✅ Images are set to unoptimized (good for static export)
+
+6. Checking package.json...
+✅ Package: nextjs@0.1.0
+   Next.js version: ^14.2.32
+   React version: 18.2.0
+
+=== Debug Complete ===
+
+If you see any ❌ or ⚠️  above, those issues need to be fixed before deployment.
+

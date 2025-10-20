@@ -7,7 +7,7 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
 const products = [
   {
     name: 'Regtime Manager',
-    logo: '/Regtime Manager Blue 1080px.png',
+    logo: '/Regtime-Manager-Blue-1080px.png',
     description: 'Comprehensive time management'
   },
   {
@@ -17,7 +17,7 @@ const products = [
   },
   {
     name: 'Regtime Builder',
-    logo: '/Regtime Builder Maize 1080px.png',
+    logo: '/Regtime-Builder-Night-1080px.png',
     description: 'Construction project tracking'
   }
 ];

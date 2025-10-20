@@ -26,7 +26,7 @@ export default function ShowcaseSocial({ className = '' }: ShowcaseSocialProps) 
     {
       id: 2,
       variant: 'image' as const,
-      image: '/brand/geometric-buildings.jpg',
+      image: '/brand/interior-workspace.jpg',
       title: 'Urban Architecture',
       logo: true
     },

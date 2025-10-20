@@ -62,7 +62,7 @@ export default function ContactPage() {
 
                 <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
                   <h3 className="text-xl font-semibold text-foreground">Our office</h3>
-                  <p className="mt-1 text-sm text-white">Stop by or schedule a meeting — we'd love to meet you.</p>
+                  <p className="mt-1 text-sm text-white">Stop by or schedule a meeting — we&apos;d love to meet you.</p>
                   <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="rounded-lg border border-border p-4">
                       <div className="text-sm font-medium text-foreground">Address</div>

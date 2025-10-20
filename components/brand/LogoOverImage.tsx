@@ -16,8 +16,8 @@ interface LogoOverImageProps {
  * LogoOverImage - Automatically chooses logo variant based on background
  * 
  * Usage examples:
- * <LogoOverImage backgroundImage="/dark-building.jpg" logoPosition="top-right" />
- * <LogoOverImage backgroundImage="/light-sky.jpg" forceVariant="dark" />
+ * <LogoOverImage backgroundImage="/brand/hero-cityscape.jpg" logoPosition="top-right" />
+ * <LogoOverImage backgroundImage="/hero-interior.jpg" forceVariant="dark" />
  */
 export default function LogoOverImage({
   backgroundImage,
@@ -57,9 +57,9 @@ export default function LogoOverImage({
     lg: 'w-16 h-16'
   };
 
-  const logoSrc = logoVariant === 'light' 
-    ? '/IconMark White 540px.png'
-    : '/IconMark Night 540px.png';
+  const logoSrc = logoVariant === 'light'
+    ? '/IconMark-White-540px.png'
+    : '/IconMark-Night-540px.png';
 
   return (
     <div className={`relative overflow-hidden ${className}`}>

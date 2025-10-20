@@ -36,11 +36,11 @@ type Person = {
 };
 
 const team: Person[] = [
-  { name: 'Yuri Geylik',     role: 'CEO & Founder',              image: '/team/Yuri_Geylik_Headshot copy.png',   priority: true },
-  { name: 'Kirill Boyarkin', role: 'CTO',                        image: '/team/Kirill_Boyarkin_Headshot copy.png' },
-  { name: 'Omar Hashmi',     role: 'Head of Revenue Operations', image: '/team/Omar_Hashmi_Headshot copy.png'   },
-  { name: 'Anna Martynova',  role: 'Director of Incentives',     image: '/team/Anna_Martynova_Headshot copy.png'   },
-  { name: 'Max Isakov',      role: 'Director of Product',        image: '/team/Max_Isakov_Headshot copy.png'    },
+  { name: 'Yuri Geylik',     role: 'CEO & Founder',              image: '/team/yuri-geylik-headshot.png',   priority: true },
+  { name: 'Kirill Boyarkin', role: 'CTO',                        image: '/team/kirill-boyarkin-headshot.png' },
+  { name: 'Omar Hashmi',     role: 'Head of Revenue Operations', image: '/team/omar-hashmi-headshot.png'   },
+  { name: 'Anna Martynova',  role: 'Director of Incentives',     image: '/team/anna-martynova-headshot.png'   },
+  { name: 'Max Isakov',      role: 'Director of Product',        image: '/team/max-isakov-headshot.png'    },
 ];
 
 export default function AboutPage() {

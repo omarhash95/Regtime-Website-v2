@@ -16,21 +16,21 @@ import FeaturesSection from '@/components/sections/FeaturesSection';
 const products = [
   {
     name: 'Regtime Manager',
-    image: '/Regtime Manager Blue 1080px.png',
+    image: '/Regtime-Manager-Blue-1080px.png',
     description: 'Comprehensive time management for teams and projects',
     features: ['Advanced time tracking', 'Project management', 'Team collaboration', 'Custom reporting'],
     color: 'from-blue-500 to-blue-600'
   },
   {
     name: 'Regtime Marketer',
-    image: '/Regtime Marketer Cadet 1080px.png',
+    image: '/regtime-marketer-cadet-1080px.png',
     description: 'Specialized tools for marketing teams and campaigns',
     features: ['Campaign tracking', 'ROI analytics', 'Client billing', 'Performance metrics'],
     color: 'from-teal-500 to-teal-600'
   },
   {
     name: 'Regtime Builder',
-    image: '/Regtime Builder Maize 1080px.png',
+    image: '/Regtime-Builder-Night-1080px.png',
     description: 'Purpose-built for construction and project-based work',
     features: ['Job site tracking', 'Equipment monitoring', 'Labor cost analysis', 'Progress reporting'],
     color: 'from-yellow-500 to-yellow-600'
@@ -68,7 +68,7 @@ export default function Home() {
                   <div className="flex justify-center mb-6">
                     <span className="inline-flex items-center justify-center rounded-xl bg-white p-3 ring-1 ring-[hsl(var(--border))]">
                       <Image
-                        src="/Regtime Builder Night 1080px.png"
+                        src="/Regtime-Builder-Night-1080px.png"
                         alt="Regtime Builder logo"
                         width={160}
                         height={160}
@@ -96,7 +96,7 @@ export default function Home() {
                   <div className="flex justify-center mb-6">
                     <span className="inline-flex items-center justify-center rounded-xl bg-white p-3 ring-1 ring-[hsl(var(--border))]">
                       <Image
-                        src="/Regtime Marketer Night 1080px.png"
+                        src="/Regtime-Marketer-Night-1080px.png"
                         alt="Regtime Marketer logo"
                         width={160}
                         height={160}
@@ -123,7 +123,7 @@ export default function Home() {
                   <div className="flex justify-center mb-6">
                     <span className="inline-flex items-center justify-center rounded-xl bg-white p-3 ring-1 ring-[hsl(var(--border))]">
                       <Image
-                        src="/Regtime Manager Night 1080px.png"
+                        src="/Regtime-Manager-Night-1080px.png"
                         alt="Regtime Manager logo"
                         width={160}
                         height={160}

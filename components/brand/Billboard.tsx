@@ -28,7 +28,7 @@ interface BillboardProps {
  * Billboard - Full-width marketing section with framed images
  * 
  * Usage examples:
- * <Billboard title="Transform Your Business" image="/hero.jpg" frameType="chevron" />
+ * <Billboard title="Transform Your Business" image="/brand/hero-cityscape.jpg" frameType="chevron" />
  * <Billboard mode="dark" align="image-right" title="Platform" description="..." />
  */
 export default function Billboard({

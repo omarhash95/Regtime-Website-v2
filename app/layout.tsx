@@ -1,32 +1,33 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import Script from 'next/script';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import RouteTransition from '@/components/ux/RouteTransition';
 import ToastRoot from '@/components/toast/ToastRoot';
 
-const aspekta = localFont({
-  src: [
-    { path: '../public/fonts/Aspekta-300.woff2', weight: '300', style: 'normal' },
-    { path: '../public/fonts/Aspekta-400.woff2', weight: '400', style: 'normal' },
-    { path: '../public/fonts/Aspekta-500.woff2', weight: '500', style: 'normal' },
-    { path: '../public/fonts/Aspekta-700.woff2', weight: '700', style: 'normal' },
-  ],
-  variable: '--font-aspekta',
-  display: 'swap',
-});
-
 export const metadata: Metadata = {
-  title: 'Regtime',
-  description: 'Transforming affordable housing management with intelligent automation and compliance tools.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://regtime.com'),
+  title: 'Regtime - Professional Time Management Solutions',
+  description: 'Transform your business with Regtime\'s comprehensive time management platform.',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/IconMark-Alice-Blue-540px.png' }
+    ],
+    apple: '/IconMark-Alice-Blue-540px.png',
+  },
+  openGraph: {
+    title: 'Regtime - Professional Time Management Solutions',
+    description: 'Transform your business with Regtime\'s comprehensive time management platform.',
+    images: ['/IconMark-Alice-Blue-540px.png'],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={`${aspekta.variable} bg-background text-foreground antialiased`}>
+      <body className="bg-background text-foreground antialiased font-sans">
         <SmoothScrollProvider>
           <RouteTransition>
             <ToastRoot>{children}</ToastRoot>
